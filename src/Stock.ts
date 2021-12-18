@@ -1,5 +1,3 @@
-class Stock {
+class Stock {}
 
-}
-
-export {Stock}
+export { Stock };
