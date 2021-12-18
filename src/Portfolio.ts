@@ -13,14 +13,17 @@ class Portfolio {
 
   public getProfit(initialDate: Date, finalDate: Date): number {
     const profitByStock = this._stocks.map((stock: Stock) => {
-        const priceDuringInitialDate: number = stock.getPrice(initialDate)
-        const priceDuringFinalDate: number = stock.getPrice(finalDate)
+      const priceDuringInitialDate: number = stock.getPrice(initialDate);
+      const priceDuringFinalDate: number = stock.getPrice(finalDate);
 
-        return priceDuringFinalDate - priceDuringInitialDate
-      })
-    console.log(profitByStock)
+      return priceDuringFinalDate - priceDuringInitialDate;
+    });
+    console.log(profitByStock);
 
-    return profitByStock.reduce((previousProfit, nextProfit) => previousProfit + nextProfit, 0)
+    return profitByStock.reduce(
+      (previousProfit, nextProfit) => previousProfit + nextProfit,
+      0
+    );
   }
 }
 
