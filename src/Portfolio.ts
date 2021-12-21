@@ -12,18 +12,15 @@ class Portfolio {
   }
 
   public getProfit(initialDate: Date, finalDate: Date): number {
-    const profitByStock = this._stocks.map((stock: Stock) => {
-      const priceDuringInitialDate: number = stock.getPrice(initialDate);
-      const priceDuringFinalDate: number = stock.getPrice(finalDate);
+    const sumOfInitialPrices = this._stocks.reduce((acumulator: number, currentStock: Stock) =>
+      acumulator + currentStock.getPrice(initialDate)
+    , 0)
 
-      return priceDuringFinalDate - priceDuringInitialDate;
-    });
-    console.log(profitByStock);
+    const sumOfFinalPrices = this._stocks.reduce((acumulator: number, currentStock: Stock) =>
+      acumulator + currentStock.getPrice(finalDate)
+    , 0)
 
-    return profitByStock.reduce(
-      (previousProfit, nextProfit) => previousProfit + nextProfit,
-      0
-    );
+    return (sumOfFinalPrices - sumOfInitialPrices) / sumOfFinalPrices
   }
 }
 
