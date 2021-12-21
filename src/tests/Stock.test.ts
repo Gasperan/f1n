@@ -27,15 +27,14 @@ it("should throw an exception when does not exists price for given date", () => 
   const price = 300;
   stock.addPrice(date, price);
 
-  let thrownError: Error
+  let thrownError: Error;
   try {
     const date: Date = new Date("2022-12-17");
     stock.getPrice(date);
-  }
-  catch(error: any) {
-    thrownError = error
+  } catch (error: any) {
+    thrownError = error;
   }
 
   expect(thrownError instanceof UnexpectedDateError).toBe(true);
   expect(thrownError.message).toBe("Does not exists a price for given date");
-})
+});
