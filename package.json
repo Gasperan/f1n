@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "unit-tests": "jest --watchAll --coverage ./tests/unit-tests/",
-    "integration-tests": "jest --watchAll ./tests/integration-tests/",
+    "unit-tests": "jest --coverage ./tests/unit-tests/",
     "start": "ts-node src/index.ts"
   },
   "author": "Gaspar Soto Romero",
@@ -19,7 +18,7 @@
     "ts-jest": "27.1.2"
   },
   "dependencies": {
-    "ts-node": "^10.4.0",
+    "ts-node": "10.4.0",
     "typescript": "4.5.4"
   },
   "jest": {

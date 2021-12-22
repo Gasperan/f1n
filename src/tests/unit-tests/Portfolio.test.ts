@@ -18,19 +18,19 @@ it("should return profit for portfolio with one Stock when two valid dates are g
   const portfolio: Portfolio = new Portfolio();
 
   const meta: Stock = new Stock("Meta");
-  meta.addPrice(new Date("2021-12-15"), 300);
-  meta.addPrice(new Date("2021-12-16"), 750);
-  meta.addPrice(new Date("2021-12-17"), 150);
+  meta.addPrice(new Date("2021-12-15T00:00:00"), 300);
+  meta.addPrice(new Date("2021-12-16T00:00:00"), 750);
+  meta.addPrice(new Date("2021-12-17T00:00:00"), 150);
 
   portfolio.addStock(meta);
 
   const negativeProfit = portfolio.getProfit(
-    new Date("2021-12-15"),
-    new Date("2021-12-17")
+    new Date("2021-12-15T00:00:00"),
+    new Date("2021-12-17T00:00:00")
   );
   const positiveProfit = portfolio.getProfit(
-    new Date("2021-12-15"),
-    new Date("2021-12-16")
+    new Date("2021-12-15T00:00:00"),
+    new Date("2021-12-16T00:00:00")
   );
 
   expect(negativeProfit).toEqual(-1);
@@ -41,25 +41,25 @@ it("should return profit for portfolio with multiples Stocks when two valid date
   const portfolio: Portfolio = new Portfolio();
 
   const meta: Stock = new Stock("Meta");
-  meta.addPrice(new Date("2021-12-15"), 300);
-  meta.addPrice(new Date("2021-12-16"), 750);
-  meta.addPrice(new Date("2021-12-17"), 150);
+  meta.addPrice(new Date("2021-12-15T00:00:00"), 300);
+  meta.addPrice(new Date("2021-12-16T00:00:00"), 750);
+  meta.addPrice(new Date("2021-12-17T00:00:00"), 150);
 
   const tesla: Stock = new Stock("Tesla");
-  tesla.addPrice(new Date("2021-12-15"), 550);
-  tesla.addPrice(new Date("2021-12-16"), 1000);
-  tesla.addPrice(new Date("2021-12-17"), 250);
+  tesla.addPrice(new Date("2021-12-15T00:00:00"), 550);
+  tesla.addPrice(new Date("2021-12-16T00:00:00"), 1000);
+  tesla.addPrice(new Date("2021-12-17T00:00:00"), 250);
 
   portfolio.addStock(meta);
   portfolio.addStock(tesla);
 
   const negativeProfit = portfolio.getProfit(
-    new Date("2021-12-15"),
-    new Date("2021-12-17")
+    new Date("2021-12-15T00:00:00"),
+    new Date("2021-12-17T00:00:00")
   );
   const positiveProfit = portfolio.getProfit(
-    new Date("2021-12-15"),
-    new Date("2021-12-16")
+    new Date("2021-12-15T00:00:00"),
+    new Date("2021-12-16T00:00:00")
   );
 
   expect(negativeProfit).toEqual(-1.125);
@@ -70,15 +70,15 @@ it("should throw an exception when calculate profit for wrong dates", () => {
   const portfolio: Portfolio = new Portfolio();
 
   const apple: Stock = new Stock("Apple");
-  apple.addPrice(new Date("2021-12-15"), 300);
-  apple.addPrice(new Date("2021-12-16"), 750);
-  apple.addPrice(new Date("2021-12-17"), 150);
+  apple.addPrice(new Date("2021-12-15T00:00:00"), 300);
+  apple.addPrice(new Date("2021-12-16T00:00:00"), 750);
+  apple.addPrice(new Date("2021-12-17T00:00:00"), 150);
 
   portfolio.addStock(apple);
 
   let thrownError: any;
   try {
-    portfolio.getProfit(new Date("2021-12-15"), new Date("2022-12-17"));
+    portfolio.getProfit(new Date("2021-12-15T00:00:00"), new Date("2022-12-17T00:00:00"));
   } catch (error: any) {
     thrownError = error;
   }
@@ -91,14 +91,14 @@ it("should return portafolio details as json", () => {
   const portfolio: Portfolio = new Portfolio();
 
   const meta: Stock = new Stock("Meta");
-  meta.addPrice(new Date("2021-12-15"), 300);
-  meta.addPrice(new Date("2021-12-16"), 750);
-  meta.addPrice(new Date("2021-12-17"), 150);
+  meta.addPrice(new Date("2021-12-15T00:00:00"), 300);
+  meta.addPrice(new Date("2021-12-16T00:00:00"), 750);
+  meta.addPrice(new Date("2021-12-17T00:00:00"), 150);
 
   const tesla: Stock = new Stock("Tesla");
-  tesla.addPrice(new Date("2021-12-15"), 550);
-  tesla.addPrice(new Date("2021-12-16"), 1000);
-  tesla.addPrice(new Date("2021-12-17"), 250);
+  tesla.addPrice(new Date("2021-12-15T00:00:00"), 550);
+  tesla.addPrice(new Date("2021-12-16T00:00:00"), 1000);
+  tesla.addPrice(new Date("2021-12-17T00:00:00"), 250);
 
   portfolio.addStock(meta);
   portfolio.addStock(tesla);
@@ -110,17 +110,17 @@ it("should return portafolio details as json", () => {
       {
         name: "Meta",
         prices: [
-          { date: "Tue Dec 14 2021", price: 300 },
-          { date: "Wed Dec 15 2021", price: 750 },
-          { date: "Thu Dec 16 2021", price: 150 },
+          { date: "Wed Dec 15 2021", price: 300 },
+          { date: "Thu Dec 16 2021", price: 750 },
+          { date: "Fri Dec 17 2021", price: 150 },
         ],
       },
       {
         name: "Tesla",
         prices: [
-          { date: "Tue Dec 14 2021", price: 550 },
-          { date: "Wed Dec 15 2021", price: 1000 },
-          { date: "Thu Dec 16 2021", price: 250 },
+          { date: "Wed Dec 15 2021", price: 550 },
+          { date: "Thu Dec 16 2021", price: 1000 },
+          { date: "Fri Dec 17 2021", price: 250 },
         ],
       },
     ],

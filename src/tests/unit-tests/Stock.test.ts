@@ -3,7 +3,7 @@ import { UnexpectedDateError } from "../../UnexpectedDateError";
 
 it("should return price given a date", () => {
   const stock: Stock = new Stock("Some great stock");
-  const date: Date = new Date("2021-12-17");
+  const date: Date = new Date("2021-12-17T00:00:00");
   const price = 300;
   stock.addPrice(date, price);
 
@@ -22,13 +22,13 @@ it("should return stock name", () => {
 
 it("should throw an exception when does not exists price for given date", () => {
   const stock: Stock = new Stock("Great Stock");
-  const date: Date = new Date("2021-12-17");
+  const date: Date = new Date("2021-12-17T00:00:00");
   const price = 300;
   stock.addPrice(date, price);
 
   let thrownError: Error;
   try {
-    const date: Date = new Date("2022-12-17");
+    const date: Date = new Date("2022-12-17T00:00:00");
     stock.getPrice(date);
   } catch (error: any) {
     thrownError = error;
