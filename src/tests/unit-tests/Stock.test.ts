@@ -1,8 +1,8 @@
-import { Stock } from "../Stock";
-import { UnexpectedDateError } from "../UnexpectedDateError";
+import { Stock } from "../../Stock";
+import { UnexpectedDateError } from "../../UnexpectedDateError";
 
 it("should return price given a date", () => {
-  const stock: Stock = new Stock();
+  const stock: Stock = new Stock("Some great stock");
   const date: Date = new Date("2021-12-17");
   const price = 300;
   stock.addPrice(date, price);
@@ -13,8 +13,7 @@ it("should return price given a date", () => {
 });
 
 it("should return stock name", () => {
-  const stock: Stock = new Stock();
-  stock.name = "My Marvelous Stock";
+  const stock: Stock = new Stock("My Marvelous Stock");
 
   const stockName = stock.name;
 
@@ -22,7 +21,7 @@ it("should return stock name", () => {
 });
 
 it("should throw an exception when does not exists price for given date", () => {
-  const stock: Stock = new Stock();
+  const stock: Stock = new Stock("Great Stock");
   const date: Date = new Date("2021-12-17");
   const price = 300;
   stock.addPrice(date, price);

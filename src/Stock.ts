@@ -4,6 +4,10 @@ class Stock {
   private _historicalPrices = new Map<string, number>();
   private _name: string;
 
+  constructor(name: string) {
+    this._name = name;
+  }
+
   public addPrice(date: Date, price: number): void {
     const dateAskey = date.toDateString();
     this._historicalPrices.set(dateAskey, price);
@@ -20,12 +24,12 @@ class Stock {
     return price;
   }
 
-  set name(name: string) {
-    this._name = name;
-  }
-
   get name(): string {
     return this._name;
+  }
+
+  get historicalPrices(): Map<string, number> {
+    return this._historicalPrices;
   }
 }
 
